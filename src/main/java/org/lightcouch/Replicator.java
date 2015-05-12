@@ -140,7 +140,7 @@ public class Replicator {
 			return list;
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e);
 		} finally {
 			close(instream);
 		}

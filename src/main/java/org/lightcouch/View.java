@@ -173,7 +173,7 @@ public class View {
 			return list;
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e);
 		} finally {
 			close(instream);
 		}
@@ -214,7 +214,7 @@ public class View {
 			return vr;
 		} catch (UnsupportedEncodingException e1) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e1);
 		} finally {
 			close(instream);
 		}
@@ -263,7 +263,7 @@ public class View {
 			return JsonToObject(gson, array.get(0), "value", classOfV);
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e);
 		} finally {
 			close(instream);
 		}

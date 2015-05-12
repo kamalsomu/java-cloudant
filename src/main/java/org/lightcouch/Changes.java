@@ -93,6 +93,7 @@ public class Changes {
 			setReader(new BufferedReader(is));
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
+			throw new RuntimeException(e);
 		}
 		return this;
 	}

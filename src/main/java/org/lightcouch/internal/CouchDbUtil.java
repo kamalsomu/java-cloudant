@@ -232,7 +232,7 @@ final public class CouchDbUtil {
 			return getAsString(new JsonParser().parse(reader).getAsJsonObject(), e);
 		} catch (UnsupportedEncodingException e1) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e1);
 		}
 		finally {
 			close(instream);
@@ -273,7 +273,7 @@ final public class CouchDbUtil {
 			return gson.fromJson(reader,typeofT);
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e);
 		}
 	}
 	
@@ -287,7 +287,7 @@ final public class CouchDbUtil {
 			return gson.fromJson(reader, classType);
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e);
 		}
 	}
 	 
@@ -302,7 +302,7 @@ final public class CouchDbUtil {
 			return gson.fromJson(reader,typeofT);
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen as every implementation of the java platform is required to support UTF-8.
-			return null;
+			throw new RuntimeException(e);
 		}
 	}
 }
