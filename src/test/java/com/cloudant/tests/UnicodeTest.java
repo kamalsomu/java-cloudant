@@ -45,7 +45,15 @@ public class UnicodeTest {
 
 	private static final Log log = LogFactory.getLog(UnicodeTest.class);
 	private static final String DB_NAME = "unicodetestdb";
-	
+
+	// According to JSON (ECMA-404, section 9 "Strings"):
+	// - All Unicode characters except those that must be escaped
+	//   (U+0000..U+001F, U+0022, U+005C) may be placed in a string.
+	// - All Unicode characters may be included as Unicode escapes
+	//   (after conversion to UTF-16).
+	private static final String TESTSTRING = "Gr\u00fc\u00dfe \u65e5\u672c\u8a9e \uD834\uDD1E.";
+	private static final String TESTSTRING_ESCAPED = "Gr\\u00fc\\u00dfe \\u65e5\\u672c\\u8a9e \\uD834\\uDD1E.";
+
 	private static CloudantClient dbClient;
 	private static Database db;
 	private static Properties props ;
@@ -230,15 +238,6 @@ public class UnicodeTest {
 	}
 
 	// ========================================================================
-
-	// According to JSON (ECMA-404, section 9 "Strings"):
-	// - All Unicode characters except those that must be escaped
-	//   (U+0000..U+001F, U+0022, U+005C) may be placed in a string.
-	// - All Unicode characters may be included as Unicode escapes
-	//   (after conversion to UTF-16).
-
-	public static final String TESTSTRING = "Gr\u00fc\u00dfe \u65e5\u672c\u8a9e \uD834\uDD1E.";
-	public static final String TESTSTRING_ESCAPED = "Gr\\u00fc\\u00dfe \\u65e5\\u672c\\u8a9e \\uD834\\uDD1E.";
 
 	/**
 	 * Test whether literal Unicode characters in a string work.
